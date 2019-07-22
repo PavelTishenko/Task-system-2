@@ -1,0 +1,28 @@
+<table ngDraggable ngResizable class="tg" *ngFor="let cours of dataArr | async" id="{{ cours.id }}">
+  <tr *ngIf="cours.name === named">
+    <td class="tg-dg7a"></td>
+    <th class="tg-0lax">Name</th>
+    <td class="tg-dg7a">{{ cours.name }}</td>
+    <th class="tg-0lax">Position</th>
+    <td class="tg-dg7a">{{ cours.position }}</td>
+    <th class="tg-0lax">Tasks</th>
+    <td class="tg-dg7a">{{ cours.tz }}</td>
+    <th class="tg-0lax">Date</th>
+    <td class="tg-dg7a">{{ cours.date | date }}</td>
+    <button class="btn-done" (click)="delete(cours.id)">Done</button>
+  </tr>
+</table>
+
+<div class="inputs-flex">
+  <select name="" id="" [(ngModel)]="dataTo.name">
+    <option value="Павел">Павел</option>
+    <option value="Кирилл">Кирилл</option>
+    <option value="Евгений">Евгений</option>
+    <option value="Тимур">Тимур</option>
+  </select>
+  <!-- <input type="text" name="dataToName" id="{{ dataTo.name }}" [(ngModel)]="dataTo.name" placeholder="Name" /> -->
+  <input type="text" name="dataToPosition" id="{{ dataTo.position }}" [(ngModel)]="dataTo.position"
+    placeholder="Position" />
+  <textarea name="dataToTz" cols="30" rows="10" [(ngModel)]="dataTo.tz" placeholder="TZ"></textarea>
+  <button (click)="addData()">Add</button>
+</div>
