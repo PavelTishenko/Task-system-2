@@ -21,7 +21,14 @@ export class NavigateComponent {
     console.log(`You are sign in as ${event}`);
     const element = document.getElementById("auth");
     element.classList.add("visible");
-    const listEmployees = document.getElementById('employees');
-    listEmployees.classList.remove('visible');
+    const btnOfEmployees = document.querySelector("#btn-employees");
+    btnOfEmployees.classList.remove("visible");
+    const btnStat = document.querySelector("#btn-stat");
+    btnStat.classList.remove("visible");
+  }
+
+  show() {
+    const listEmployees = document.getElementById("employees");
+    listEmployees.classList.toggle("visible");
   }
 }

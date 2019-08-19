@@ -16,15 +16,19 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { EmployeeOneComponent } from './employee-one/employee-one.component';
 import { FormsModule } from "@angular/forms";
+import { StatisticsComponent } from './statistics/statistics.component';
+import { ChartsModule } from 'ng2-charts';
 // import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigateComponent,
-    EmployeeOneComponent
+    EmployeeOneComponent,
+    StatisticsComponent
   ],
   imports: [
+    ChartsModule,
     FormsModule,
     AngularFireAuthModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebase),

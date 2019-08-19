@@ -2,12 +2,40 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Работники</mat-toolbar>
-    <mat-nav-list class="visible" id='employees'>
-      <a mat-list-item [routerLink]="['employee', 'Pavel']" routerLinkActive="router-link-active">Павел</a>
-      <a mat-list-item [routerLink]="['employee', 'Kirill']" routerLinkActive="router-link-active">Кирилл</a>
-      <a mat-list-item [routerLink]="['employee', 'Evgeniy']" routerLinkActive="router-link-active">Евгений</a>
-      <a mat-list-item [routerLink]="['employee', 'Timyr']" routerLinkActive="router-link-active">Тимур</a>
+    <button mat-flat-button id="btn-employees" class="visible" (click)="show()">
+      <mat-icon>assignment_ind</mat-icon>
+      Employees
+    </button>
+    <mat-nav-list class="visible" id="employees">
+      <a mat-list-item [routerLink]="['employee', 'Pavel']" routerLinkActive="router-link-active">
+        <mat-icon>perm_identity</mat-icon>
+        Павел
+      </a>
+      <a mat-list-item [routerLink]="['employee', 'Kirill']" routerLinkActive="router-link-active">
+        <mat-icon>perm_identity</mat-icon>
+        Кирилл
+      </a>
+      <a mat-list-item [routerLink]="['employee', 'Evgeniy']" routerLinkActive="router-link-active">
+        <mat-icon>perm_identity</mat-icon>
+        Евгений
+      </a>
+      <a mat-list-item [routerLink]="['employee', 'Timyr']" routerLinkActive="router-link-active">
+        <mat-icon>perm_identity</mat-icon>
+        Тимур
+      </a>
+      <a mat-list-item [routerLink]="['employee', 'Evgeniykuz']" routerLinkActive="router-link-active">
+        <mat-icon>perm_identity</mat-icon>
+        Евгений Куз
+      </a>
     </mat-nav-list>
+    <button mat-flat-button  
+      class="visible"
+      id="btn-stat"> 
+        <mat-icon>timeline</mat-icon>
+        <a [routerLink]="['statistics']" routerLinkActive="router-link-active">
+        Statisticks
+        </a>
+    </button>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -19,7 +47,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
-    <ngx-auth-firebaseui (onSuccess)='afterSignIn($event)' id='auth' class=""
+    <ngx-auth-firebaseui (onSuccess)="afterSignIn($event)" id="auth" class=""
       [providers]="[providers.Google, providers.Facebook]">
     </ngx-auth-firebaseui>
   </mat-sidenav-content>

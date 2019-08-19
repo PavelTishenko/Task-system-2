@@ -1,3 +1,5 @@
+import { ChartDataService } from './../services/chart-data.service';
+import { map } from 'rxjs/operators';
 import { User } from "./../user";
 import { Component, OnInit } from "@angular/core";
 import { FireService } from "../services/fire.service";
@@ -8,6 +10,7 @@ import {
 } from "@angular/fire/firestore";
 import { Datas } from "../Datas";
 import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: "app-employee-one",
@@ -28,15 +31,24 @@ export class EmployeeOneComponent implements OnInit {
   triger: boolean = false;
   collection: AngularFirestoreCollection<Datas>;
   named: string;
+  emplAll: any = {
+    Kirill: null,
+    Evgeniy: null,
+    Timur: null,
+    Evgeniykuz: null,
+    Pavel: null
+  };
   constructor(
+    chart: ChartDataService,
     private route: ActivatedRoute,
     private db: FireService,
     private firestore: AngularFirestore
   ) {
+    this.emplAll = chart.emplData;
     this.courses = db.getData();
     this.collection = this.firestore.collection("demo-courses");
     this.dataArr = this.db.getData();
-    this.usersData = this.db.getUsersData().subscribe(e => console.log(e));//all registetred users
+    this.usersData = this.db.getUsersData().subscribe(e => console.log(e)); //all registetred users
   }
 
   ngOnInit() {
@@ -49,15 +61,29 @@ export class EmployeeOneComponent implements OnInit {
         this.named = "Евгений";
       } else if (params.name === "Timyr") {
         this.named = "Тимур";
+      } else if (params.name === "Evgeniykuz") {
+        this.named = "Евгений Куз";
       }
     });
   }
 
   addData() {
+    if(this.named === 'Кирилл') {
+      this.emplAll.Kirill += 1;
+    } else if (this.named === 'Павел') {
+      this.emplAll.Pavel += 1;
+    } else if (this.named === 'Евгений') {
+      this.emplAll.Evgeniy += 1;
+    } else if (this.named === 'Тимур') {
+      this.emplAll.Timur += 1;
+    }
+
+
     const dateNow = Date.now();
     this.dataTo.date = dateNow;
     const myData = Object.assign({}, this.dataTo);
     this.db.addDatas(myData);
+    console.log(this.emplAll);
   }
 
   delete(id: string) {
