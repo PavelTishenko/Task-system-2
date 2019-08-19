@@ -1,6 +1,6 @@
-import { StatisticsComponent } from "./statistics/statistics.component";
-import { NavigateComponent } from "./navigate/navigate.component";
-import { EmployeeOneComponent } from "./employee-one/employee-one.component";
+import { StatisticsComponent } from "./components/statistics/statistics.component";
+import { NavigateComponent } from "./components/navigate/navigate.component";
+import { EmployeeOneComponent } from "./components/employee-one/employee-one.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 

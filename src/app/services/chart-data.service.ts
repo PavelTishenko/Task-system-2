@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ChartDataService {
   emplData = {
@@ -10,6 +10,6 @@ export class ChartDataService {
     Timur: null,
     Evgeniykuz: null,
     Pavel: null
-  }
+  };
   constructor() {}
 }

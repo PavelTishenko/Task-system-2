@@ -1,5 +1,5 @@
 import { map } from "rxjs/operators";
-import { ChartDataService } from "./../services/chart-data.service";
+import { ChartDataService } from "../../services/chart-data.service";
 import { Component, OnInit } from "@angular/core";
 import { ChartOptions, ChartType, ChartDataSets } from "chart.js";
 
