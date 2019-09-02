@@ -28,14 +28,23 @@
         Евгений Куз
       </a>
     </mat-nav-list>
-    <button mat-flat-button  
+    <button mat-flat-button
       class="visible"
-      id="btn-stat"> 
+      id="btn-stat">
         <mat-icon>timeline</mat-icon>
         <a [routerLink]="['statistics']" routerLinkActive="router-link-active">
         Statisticks
         </a>
     </button>
+    <button mat-flat-button
+    class="visible"
+    id="btn-stat-parser">
+      <mat-icon>file_copy</mat-icon>
+      <a [routerLink]="['parser']" routerLinkActive="router-link-active">
+      Uploader
+      </a>
+    </button>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">

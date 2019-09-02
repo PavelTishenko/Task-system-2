@@ -25,6 +25,8 @@ export class NavigateComponent {
     btnOfEmployees.classList.remove("visible");
     const btnStat = document.querySelector("#btn-stat");
     btnStat.classList.remove("visible");
+    const btnParser = document.querySelector('#btn-stat-parser');
+    btnParser.classList.remove("visible");
   }
 
   show() {

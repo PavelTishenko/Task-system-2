@@ -47,7 +47,7 @@ export class EmployeeOneComponent implements OnInit {
     this.courses = db.getData();
     this.collection = this.firestore.collection("demo-courses");
     this.dataArr = this.db.getData();
-    this.usersData = this.db.getUsersData().subscribe(e => console.log(e)); //all registetred users
+    this.usersData = this.db.getUsersData().subscribe(e => console.log(e)); //all registered users
   }
 
   ngOnInit() {

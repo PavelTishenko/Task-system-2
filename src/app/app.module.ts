@@ -24,6 +24,7 @@ import { EmployeeOneComponent } from "./components/employee-one/employee-one.com
 import { FormsModule } from "@angular/forms";
 import { StatisticsComponent } from "./components/statistics/statistics.component";
 import { ChartsModule } from "ng2-charts";
+import { FileParserComponent } from './components/file-parser/file-parser.component';
 // import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ChartsModule } from "ng2-charts";
     AppComponent,
     NavigateComponent,
     EmployeeOneComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    FileParserComponent
   ],
   imports: [
     ChartsModule,
