@@ -25,6 +25,11 @@ import { FormsModule } from "@angular/forms";
 import { StatisticsComponent } from "./components/statistics/statistics.component";
 import { ChartsModule } from "ng2-charts";
 import { FileParserComponent } from './components/file-parser/file-parser.component';
+import { DropZoneDirective } from './drop-zone.directive';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+import { FileSizePipe } from './file-size.pipe';
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
 // import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
@@ -33,7 +38,10 @@ import { FileParserComponent } from './components/file-parser/file-parser.compon
     NavigateComponent,
     EmployeeOneComponent,
     StatisticsComponent,
-    FileParserComponent
+    FileParserComponent,
+    DropZoneDirective,
+    FileUploaderComponent,
+    FileSizePipe
   ],
   imports: [
     ChartsModule,
@@ -52,7 +60,8 @@ import { FileParserComponent } from './components/file-parser/file-parser.compon
     MatIconModule,
     MatListModule,
     AngularFirestoreModule,
-    AngularDraggableModule
+    AngularDraggableModule,
+    AngularFireStorageModule
   ],
   providers: [AngularFirestoreModule],
   bootstrap: [AppComponent]

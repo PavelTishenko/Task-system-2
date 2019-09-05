@@ -1,7 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import * as XLSX from "xlsx";
-import json2html from "node-json2html";
+import {FireService} from "../../services/fire.service";
+import {Observable} from "rxjs";
+import * as firebase from "firebase";
+import {Environment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/environment";
+
 type AOA = any[][];
+
+
 @Component({
   selector: "app-file-parser",
   templateUrl: "./file-parser.component.html",
@@ -11,9 +17,10 @@ export class FileParserComponent implements OnInit {
   data: AOA = [ [1, 2], [3, 4] ];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
+  storage = firebase.storage();
+  constructor(private db:FireService) {
 
-  constructor() {}
-
+  }
   ngOnInit() {
 
   }
@@ -27,7 +34,6 @@ export class FileParserComponent implements OnInit {
       /* read workbook */
       const bstr: string = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
-
       /* grab first sheet */
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
