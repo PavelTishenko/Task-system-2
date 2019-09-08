@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { AngularFireStorage } from "angularfire2/storage";
 import { AngularFireUploadTask } from 'angularfire2/storage'
 import { log } from "util";
-import { switchMap, filter } from "rxjs/operators";
+import { switchMap, filter, last, concatMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-file-uploader',
@@ -37,10 +37,15 @@ export class FileUploaderComponent implements OnInit {
     const file: File = $event.target.files[0];
     // Add path of file in firebase
     const filePath = `test/${file.name}`;
+    
     // Upload
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges()
-      .subscribe()
+    .pipe(
+      last(),
+      concatMap(() => this.storage.ref(filePath).getDownloadURL())
+    )
+    .subscribe(console.log)
   }
   // this one below we can delete
   startUpload(event: FileList) {
