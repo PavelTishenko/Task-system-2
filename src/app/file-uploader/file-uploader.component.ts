@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { AngularFireStorage } from "angularfire2/storage";
 import { AngularFireUploadTask } from 'angularfire2/storage'
 import { log } from "util";
-import { switchMap, filter } from "rxjs/operators";
+import { switchMap, filter, last, concatMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-file-uploader',
@@ -24,6 +24,7 @@ export class FileUploaderComponent implements OnInit {
   //state for dropzone css toggling
   isHovering: boolean;
   image: string;
+  downloadURL$: Observable<string>;
   constructor(private storage: AngularFireStorage) { }
   ngOnInit() {
   }
@@ -39,8 +40,12 @@ export class FileUploaderComponent implements OnInit {
     const filePath = `test/${file.name}`;
     // Upload
     const task = this.storage.upload(filePath, file);
-    task.snapshotChanges()
-      .subscribe()
+   this.downloadURL$ = task.snapshotChanges()
+    .pipe(
+      last(),
+      concatMap(() => this.storage.ref(filePath).getDownloadURL())
+    );
+     this.downloadURL$.subscribe(console.log);
   }
   // this one below we can delete
   startUpload(event: FileList) {
