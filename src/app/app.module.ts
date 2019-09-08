@@ -18,7 +18,9 @@ import {
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
+  MatFormFieldModule,
+  MatInputModule
 } from "@angular/material";
 import { EmployeeOneComponent } from "./components/employee-one/employee-one.component";
 import { FormsModule } from "@angular/forms";
@@ -63,7 +65,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AngularFirestoreModule,
     AngularDraggableModule,
     AngularFireStorageModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [AngularFirestoreModule],
   bootstrap: [AppComponent]
