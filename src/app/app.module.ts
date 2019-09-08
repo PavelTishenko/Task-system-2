@@ -29,6 +29,7 @@ import { DropZoneDirective } from './drop-zone.directive';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { FileSizePipe } from './file-size.pipe';
 import { AngularFireStorageModule } from "@angular/fire/storage";
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
@@ -61,7 +62,8 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     MatListModule,
     AngularFirestoreModule,
     AngularDraggableModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatExpansionModule
   ],
   providers: [AngularFirestoreModule],
   bootstrap: [AppComponent]

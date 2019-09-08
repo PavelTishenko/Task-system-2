@@ -1,8 +1,5 @@
-<div class="dropzone"
-     dropZone
-     (hovered)="toggleHover($event)"
-     (dropped)="startUpload($event)"
-     [class.hovering]="isHovering">
+<div class="dropzone" dropZone (hovered)="toggleHover($event)" (dropped)="startUpload($event)"
+  [class.hovering]="isHovering">
 
 
 
@@ -16,21 +13,19 @@
       <input class="file-input" type="file" (change)="fileUpload($event)">
 
       <span class="file-cta">
-            <span class="file-icon">
-              <i class="fa fa-upload"></i>
-            </span>
-            <span class="file-label">
-              or choose a file…
-            </span>
-          </span>
+        <span class="file-icon">
+          <i class="fa fa-upload"></i>
+        </span>
+        <span class="file-label">
+          or choose a file…
+        </span>
+      </span>
     </label>
   </div>
 </div>
 <div *ngIf="percentage | async as pct">
 
-  <progress class="progress is-info"
-            [value]="pct"
-            max="100">
+  <progress class="progress is-info" [value]="pct" max="100">
   </progress>
 
   {{ pct | number }}%
@@ -49,6 +44,37 @@
 
   <button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
   <button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
-  <button (click)="task.resume()" class="button is-info"   [disabled]="!(snap?.state === 'paused')">Resume</button>
+  <button (click)="task.resume()" class="button is-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
 
 </div>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="First name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Age">
+    </mat-form-field>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
