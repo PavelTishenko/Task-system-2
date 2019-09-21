@@ -17,7 +17,6 @@ export class FileUploaderComponent implements OnInit {
   task: AngularFireUploadTask;
   //progress monitoring
   percentage: Observable<number>;
-
   snapshot: Observable<any>;
   //download URL
   downloadURL: Observable<string>;
@@ -38,14 +37,24 @@ export class FileUploaderComponent implements OnInit {
     const file: File = $event.target.files[0];
     // Add path of file in firebase
     const filePath = `test/${file.name}`;
-    // Upload
+
+    // *********************Upload**********************************/
     const task = this.storage.upload(filePath, file);
+
    this.downloadURL$ = task.snapshotChanges()
     .pipe(
       last(),
       concatMap(() => this.storage.ref(filePath).getDownloadURL())
     );
      this.downloadURL$.subscribe(console.log);
+
+    this.downloadURL$ = task.snapshotChanges()
+      .pipe(
+        last(),
+        concatMap(() => this.storage.ref(filePath).getDownloadURL())
+      );
+     this.downloadURL$.subscribe(console.log)
+    // ****************************************************************/
   }
   // this one below we can delete
   startUpload(event: FileList) {
